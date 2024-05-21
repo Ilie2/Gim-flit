@@ -10,7 +10,7 @@ namespace GymFit
     {
 
         public GymFitContext()
-                : base("Server=.\\SQLExpress;Database=gymfit;Trusted_Connection=True;MultipleActiveResultSets=true")
+            : base("Server=tcp:gimfiter.database.windows.net,1433;Initial Catalog=gimfitpdu;Persist Security Info=False;User ID=admin_gim;Password=jugisauhi23#;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")
         {
         }
 
