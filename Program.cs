@@ -16,7 +16,7 @@ namespace log4netAdvanced
 {
     public class Program
     {
-        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(type: System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         static IEdmModel GetEdmModel()
         {
             ODataConventionModelBuilder builder = new();

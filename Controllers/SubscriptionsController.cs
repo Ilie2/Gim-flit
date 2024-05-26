@@ -7,62 +7,62 @@ using System.Web.Http;
 
 namespace GymFit.Controllers
 {
-    public class CourseSchedulesController : ODataController
+    public class SubscriptionsController : ODataController
     {
         GymFitContext db = new GymFitContext();
 
-        public CourseSchedulesController() { }
+        public SubscriptionsController() { }
 
         [EnableQuery]
-        public IQueryable<CourseSchedule> Get()
+        public IQueryable<Subscription> Get()
         {
-            return db.CourseSchedules;
+            return db.Subscriptions;
         }
 
-        public async Task<IHttpActionResult> Post(CourseSchedule course)
+        public async Task<IHttpActionResult> Post(Subscription subscription)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            db.CourseSchedules.Add(course);
+            db.Subscriptions.Add(subscription);
             await db.SaveChangesAsync();
-            return Created(course);
+            return Created(subscription);
         }
 
-        public async Task<IHttpActionResult> Put(int key, CourseSchedule course)
+        public async Task<IHttpActionResult> Put(int key, Subscription subscription)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (key != course.ID)
+            if (key != subscription.ID)
             {
                 return BadRequest();
             }
 
-            var existingCourse = await db.CourseSchedules.FindAsync(key);
-            if (existingCourse == null)
+            var existingSubscription = await db.Subscriptions.FindAsync(key);
+            if (existingSubscription == null)
             {
                 return NotFound();
             }
 
-            db.Entry(existingCourse).CurrentValues.SetValues(course);
+            db.Entry(existingSubscription).CurrentValues.SetValues(subscription);
             await db.SaveChangesAsync();
 
-            return Updated(course);
+            return Updated(subscription);
         }
 
         public async Task<IHttpActionResult> Delete(int key)
         {
-            var courseSchedule = await db.CourseSchedules.FindAsync(key);
-            if (courseSchedule == null)
+            var subscription = await db.Subscriptions.FindAsync(key);
+            if (subscription == null)
             {
                 return NotFound();
             }
 
-            db.CourseSchedules.Remove(courseSchedule);
+            db.Subscriptions.Remove(subscription);
             await db.SaveChangesAsync();
 
             return StatusCode(HttpStatusCode.NoContent);

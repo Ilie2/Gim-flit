@@ -1,3 +1,4 @@
+﻿using System.Text.Json.Serialization;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GymFit.Models
@@ -16,5 +17,8 @@ namespace GymFit.Models
         public string Description { get; set; }
 
         public int Capacity { get; set; }
+
+        [JsonIgnore] // Ignorăm serializarea proprietății Subscription
+        public virtual Subscription? Subscription { get; set; }
     }
 }

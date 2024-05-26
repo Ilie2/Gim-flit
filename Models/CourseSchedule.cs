@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-
+using System.Text.Json.Serialization;
 namespace GymFit.Models
 {
     public class CourseSchedule
@@ -15,5 +15,8 @@ namespace GymFit.Models
         public virtual List<Client> Clients { get; set; }
 
         public int ClientNo { get; set; }
+
+        [JsonIgnore] // Ignorăm serializarea proprietății Subscription
+        public virtual Subscription? Subscription { get; set; }
     }
 }

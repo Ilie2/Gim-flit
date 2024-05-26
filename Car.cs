@@ -9,7 +9,7 @@ namespace log4netAdvanced
     class Car
     {
         // create a static logger field
-        private static ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static ILog logger = LogManager.GetLogger(type: System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public string Model { get; set; }
         public int YearReleased { get; set; }
